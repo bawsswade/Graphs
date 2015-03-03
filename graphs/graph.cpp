@@ -1,5 +1,43 @@
 #include "graph.h"
 
+Graph::Graph(int a_x, int a_y)
+{
+	// create and set x&y of nodes
+	for (int i = 0; i < a_y; i++)
+	{
+		for (int j = 0; j < a_x; j++)
+		{
+			GraphNode *ptr = new GraphNode;
+			ptr->posX = j;
+			ptr->posY = i;
+			ptr->m_iNodeNumber = (i*a_x) + j;
+			this->AddNode(ptr);
+		}		
+	}
+
+	//	add edges
+	std::vector<GraphNode*>::iterator it = this->m_aNodes.begin();
+	for (int i = 0; i < a_y; i++)
+	{
+		for (int j = 0; j < a_x; j++)
+		{
+			float node = (i*a_x) + j;
+			//	edge above
+			if (i < a_y -1)
+				this->m_aNodes[node]->AddEdge(this->m_aNodes[node + a_x], 1);
+			// edge to the right
+			if (j < a_x - 1)
+				this->m_aNodes[node]->AddEdge(this->m_aNodes[node + 1], 1);
+			//	edge down
+			if (i > 0)
+				this->m_aNodes[node]->AddEdge(this->m_aNodes[node - a_x], 1);
+			//	edge to the left
+			if (j > 0)
+				this->m_aNodes[node]->AddEdge(this->m_aNodes[node - 1], 1);
+		}
+	}
+}
+
 GraphNode::GraphNode(int a_iNum)
 {
 	this->m_iNodeNumber = a_iNum;
@@ -60,7 +98,7 @@ void Graph::DisplayNodes()
 {
 	std::vector<GraphNode*>::iterator it;
 	for (it = this->m_aNodes.begin(); it != this->m_aNodes.end(); ++it) {
-		cout << "Node " << (*it)->m_iNodeNumber << endl;
+		cout << "Node: " << (*it)->posX << ", " << (*it)->posY << endl;
 	}
 }
 

@@ -2,7 +2,7 @@
 
 int main()
 {
-	GraphNode Node0(0);			//	create node
+	/*GraphNode Node0(0);			//	create node
 	GraphNode *pNode0 = &Node0;	//	ptr to node
 
 	GraphNode Node1(1);			//	create node
@@ -41,16 +41,21 @@ int main()
 
 	Node5.AddEdge(pNode4, 1);	//	add edge for Node5
 
-	/*-------Display shit-------*/
+	//-------Display shit-------
 	//myGraph.DisplayNodes();
 	//Node3.DisplayEdges();
 
 	cout << myGraph.SearchDFS(pNode0, pNode4) << endl;
 	myGraph.ResetVisited();
 	cout << myGraph.SearchDFSrec(pNode0, pNode4) << endl;
-	
-	//cout << myGraph.SearchBFS(pNode0, pNode4) << endl;
+	myGraph.ResetVisited();
+	cout << myGraph.SearchBFS(pNode0, pNode4) << endl;*/
 
+	Graph myGraph(20, 20);	//	create graph
+	myGraph.DisplayNodes();	//	display all nodes and their pos 
+
+	std::vector<GraphNode*>::iterator it = myGraph.m_aNodes.begin();
+	(*it)->DisplayEdges();	//	display first nodes edges
 
 
 	system("pause");

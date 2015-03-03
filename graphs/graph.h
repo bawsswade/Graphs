@@ -34,6 +34,7 @@ public:
 	void DisplayEdges();	//	all neighbors
 
 	int m_iNodeNumber;
+	float posX, posY;
 	~GraphNode(){};
 };
 
@@ -43,6 +44,7 @@ class Graph
 public:
 	//Creates an empty graph
 	Graph(){};
+	Graph(int x, int y);
 	//Creates a graph with the given number of nodes the contents and links of the nodes are randomized
 	Graph(unsigned int a_uiNodeCount);
 
