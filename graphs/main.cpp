@@ -2,24 +2,56 @@
 
 int main()
 {
-	GraphNode Node(1);			//	create node
-	GraphNode *pNode = &Node;	//	ptr to node
+	GraphNode Node0(0);			//	create node
+	GraphNode *pNode0 = &Node0;	//	ptr to node
 
-	GraphNode Node1(2);			//	create node
+	GraphNode Node1(1);			//	create node
 	GraphNode *pNode1 = &Node1;	//	ptr to node
 
+	GraphNode Node2(2);			//	create node
+	GraphNode *pNode2 = &Node2;	//	ptr to node
+
+	GraphNode Node3(3);			//	create node
+	GraphNode *pNode3 = &Node3;	//	ptr to node
+
+	GraphNode Node4(4);			//	create node
+	GraphNode *pNode4 = &Node4;	//	ptr to node
+
+	GraphNode Node5(5);			//	create node
+	GraphNode *pNode5 = &Node5;	//	ptr to node
+
 	Graph myGraph;				//	create graph of Nodes
-	myGraph.AddNode(pNode);
-	myGraph.AddNode(pNode1);
+	myGraph.AddNode(pNode0);	//	add node
+	myGraph.AddNode(pNode1);	//	add node
+	myGraph.AddNode(pNode2);	//	add node
+	myGraph.AddNode(pNode3);	//	add node
+	myGraph.AddNode(pNode4);	//	add node
+	myGraph.AddNode(pNode5);	//	add node
 
-	myGraph.DisplayAllNodes();
-	//GraphNode *Node2;
-	//NodeA->AddEdge(NodeB, 2.0f);
-	//Node->m_aEdges.push_back(*Node);
+	Node0.AddEdge(pNode1, 1);	//	add edges for Node0
+	Node0.AddEdge(pNode5, 1);
 
-	//Node->m_aEdges 
+	Node1.AddEdge(pNode2, 1);	//	add edges for Node1
 
-	//myGraph.AddNode(Node);
+	Node2.AddEdge(pNode3, 1);	//	add edge for Node2
+	Node2.AddEdge(pNode0, 1);
+
+	Node3.AddEdge(pNode4, 1);	//	add edge for Node3
+	Node3.AddEdge(pNode5, 1);
+
+	Node5.AddEdge(pNode4, 1);	//	add edge for Node5
+
+	/*-------Display shit-------*/
+	//myGraph.DisplayNodes();
+	//Node3.DisplayEdges();
+
+	cout << myGraph.SearchDFS(pNode0, pNode4) << endl;
+	myGraph.ResetVisited();
+	cout << myGraph.SearchDFSrec(pNode0, pNode4) << endl;
+	
+	//cout << myGraph.SearchBFS(pNode0, pNode4) << endl;
+
+
 
 	system("pause");
 };
