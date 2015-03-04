@@ -58,6 +58,7 @@ public:
 
 	void DisplayNodes();
 	void ResetVisited();
+	GraphNode FindNode(float x, float y);
 
 	NodeList m_aNodes;
 	~Graph(){};

@@ -51,12 +51,22 @@ int main()
 	myGraph.ResetVisited();
 	cout << myGraph.SearchBFS(pNode0, pNode4) << endl;*/
 
-	Graph myGraph(20, 20);	//	create graph
-	myGraph.DisplayNodes();	//	display all nodes and their pos 
+	Graph myGraph(4, 4);	//	create graph
 
-	std::vector<GraphNode*>::iterator it = myGraph.m_aNodes.begin();
-	(*it)->DisplayEdges();	//	display first nodes edges
+	//myGraph.DisplayNodes();	//	display all nodes and their pos 
 
+	//std::vector<GraphNode*>::iterator it = myGraph.m_aNodes.begin();
+	//(*it)->DisplayEdges();	//	display first nodes edges
+
+	std::vector<GraphNode*>::iterator beg = myGraph.m_aNodes.begin();
+	beg++;
+	std::vector<GraphNode*>::iterator end = myGraph.m_aNodes.end();
+	end--;
+	cout << myGraph.SearchDFSrec((*beg), (*end)) << endl;
+
+	GraphNode display;
+	display = myGraph.FindNode(1, 1);
+	cout << display.m_iNodeNumber;
 
 	system("pause");
 };

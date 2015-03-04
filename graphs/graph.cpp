@@ -204,3 +204,19 @@ bool Graph::SearchBFS(GraphNode* a_pStart, GraphNode* a_pEnd)
 	//return false if we didn't find a_pEnd
 	return false;
 }
+
+GraphNode Graph::FindNode(float a_x, float a_y)
+{
+	unsigned int closestX = INFINITY, closestY = INFINITY;
+	std::vector<GraphNode*>::iterator it = this->m_aNodes.begin();
+	GraphNode* returnNode = NULL;
+	for (it; it != this->m_aNodes.end(); it++)
+	{
+		//	return the exact position: FIX if needed
+		unsigned int tempX = (*it)->posX - a_x;
+		unsigned int tempY = (*it)->posY - a_y;
+		if (tempX == 0 && tempY == 0)
+			returnNode = *it;
+	}
+	return (*returnNode);
+}
